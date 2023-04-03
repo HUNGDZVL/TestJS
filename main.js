@@ -1,5 +1,5 @@
 // Tải dữ liệu từ tệp JSON
-const courseApi = "gio_hang.json";
+const courseApi = "shopshoes.json";
 const productBlock = document.getElementById("list-product");
 
 (function start() {
@@ -114,10 +114,9 @@ setTimeout(() => {
         for (let m of incr) {
           m.addEventListener("click", () => {
             currentValue++;
-            resultP.forEach(element => {
-               element.textContent = currentValue;
+            resultP.forEach((element) => {
+              element.textContent = currentValue;
             });
-           
           });
         }
 
@@ -127,7 +126,7 @@ setTimeout(() => {
             resultP.forEach((element) => {
               element.textContent = currentValue;
             });
-           
+
             if (currentValue === 0) {
               handleRemove();
             }
