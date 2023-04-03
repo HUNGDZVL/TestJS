@@ -1,0 +1,56 @@
+:root {/*dat bien css*/
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:  inherit;/* ke thua tu the html co thuoc tinh boderbox*/
+}
+
+html{
+    font-size: 62.5%;/*1px = 1rem trick mod %*/
+    line-height: 1.6rem; /*= 16px */
+    font-family: 'Rubik', sans-serif;
+    box-sizing: border-box; /* set up chinh kich thuoc element trong box */
+}
+
+
+
+
+/*Responsive*/
+
+
+
+
+/*test grid demo*/
+.grid__column-2{
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 16.6667%;
+
+}
+
+.grid__row {
+    margin-left: -5px;
+    margin-right: -5px;
+    display: flex;
+    flex-wrap: wrap;
+    /* dat thuoc tinh nhay xuong hang khi vuot qua kich thuoc cho phep*/
+}
+
+.grid__column-2-4{
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 20%;
+}
+
+.grid__column-10 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 83.3334%;
+
+}
+
