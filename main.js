@@ -105,7 +105,7 @@ setTimeout(() => {
           }
         };
         handleRemove();
-
+        //update pd
         let currentValue = 0;
         const incr = $$(".increase-js");
         const decr = $$(".decrease-js");
@@ -127,10 +127,13 @@ setTimeout(() => {
               element.textContent = currentValue;
             });
 
-            if (currentValue === 0) {
+            if (currentValue === 0 || currentValue <= 0) {
               handleRemove();
             }
-            currentValue = 1;
+
+            else if (currentValue === 0) {
+              currentValue = 1;
+            }
           });
         }
       }, 150);
