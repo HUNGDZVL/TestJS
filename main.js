@@ -26,6 +26,7 @@ function getCourses() {
               <div class="product__pricart">
                   <p class="product__pri">$${item.price}</p>  
                   <button id=${item.id} class="cart-btn" >Add to cart</button>
+                  <div id=${item.id} class="checkpd disable"><img src="./assets/icon/check.png" alt="check"/></div>
               </div>
               
              
@@ -40,6 +41,7 @@ setTimeout(() => {
   const $$ = document.querySelectorAll.bind(document);
   const $ = document.querySelector.bind(document);
 
+  const hiddeCheck = $$(".checkpd");
   const addToCartBtn = $$(".cart-btn");
   const cartItemsContainer = $("#list-cart");
   const textCart = $(".cart__text");
@@ -47,7 +49,17 @@ setTimeout(() => {
   for (let i of addToCartBtn) {
     i.addEventListener("click", (e) => {
       var checkid = e.target.id;
+
       textCart.classList.add("disable");
+      for (let z of hiddeCheck) {
+        let q = z.id; // lấy id của nut btn check
+        if (q === checkid) {
+          // nếu như id của btn check === id của sản phẩm thì thực hiện hành vi
+          z.classList.remove("disable");
+
+          i.classList.add("disable");
+        }
+      }
 
       // Gọi API và lấy dữ liệu
       fetch(courseApi)
@@ -91,6 +103,7 @@ setTimeout(() => {
         .catch((error) => console.error(error));
       setTimeout(() => {
         const handleRemove = function () {
+          //hàm xóa sản phẩm trong cart khi click vào thùng rác
           const addListCart = $$(".cart__item");
           const reMoveProduct = $$(".icon--remove");
 
@@ -102,6 +115,29 @@ setTimeout(() => {
             }
             for (let p of reMoveProduct) // lấy từng btn trash của sảm phẩm để xóa khi
               p.addEventListener("click", handleRemove);
+
+            //truyền thêm evetn cho icon thùng rác khi click
+
+           var halderemobe = function handlechangBtnCheck() {
+              for (let w of reMoveProduct) {
+                w.addEventListener("click", () => {
+                  (function handleRestartbtnCheck() {
+                    // hàm xử lí hanhg vi click icon rác thì thay đổi nút btn
+                    for (let r of hiddeCheck) {
+                      // lặp qa từng icon check
+                      let g = r.id; // lấy id của nut btn check
+                      if (g === checkid) {
+                        // nếu như id của btn check === id của sản phẩm thì thực hiện hành vi
+                        r.classList.add("disable");
+
+                        i.classList.remove("disable");
+                      }
+                    }
+                  })();
+                });
+              } // lấy từng btn trash của sảm phẩm để xóa khi
+            }
+            halderemobe();
           }
         };
         handleRemove();
@@ -110,6 +146,7 @@ setTimeout(() => {
         const incr = $$(".increase-js");
         const decr = $$(".decrease-js");
         const resultP = $$(".result-js");
+        // ham  tang số luong khi click  -+
 
         for (let m of incr) {
           m.addEventListener("click", () => {
@@ -119,7 +156,7 @@ setTimeout(() => {
             });
           });
         }
-
+        // ham  giảm số luong khi click  -
         for (let n of decr) {
           n.addEventListener("click", () => {
             currentValue--;
@@ -129,9 +166,8 @@ setTimeout(() => {
 
             if (currentValue === 0 || currentValue <= 0) {
               handleRemove();
-            }
-
-            else if (currentValue === 0) {
+              
+            } else if (currentValue === 0) {
               currentValue = 1;
             }
           });
