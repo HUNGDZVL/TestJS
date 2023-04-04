@@ -167,6 +167,7 @@ setTimeout(() => {
             if (currentValue === 0 || currentValue <= 0) {
               handleRemove();
               
+              
             } else if (currentValue === 0) {
               currentValue = 1;
             }
